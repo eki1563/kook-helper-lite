@@ -1,4 +1,6 @@
-# kook-kit
+# kook-helper-lite
+
+KOOK 小助手。服务器地址：https://kook.top/dlW3V0 。
 
 This template should help get you started developing with Vue 3 in Vite.
 
