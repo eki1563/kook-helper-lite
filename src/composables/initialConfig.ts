@@ -5,7 +5,7 @@ import STORAGE_KEYS from '@/config/STORAGE_KEYS'
 import STORAGE_KEYS_OLD from '@/config/STORAGE_KEYS_OLD'
 import storageHelper from '@/utils/storageHelper'
 
-import { useSetFont } from '@/composables/features/font'
+import { FONT_TYPES, useSetFont } from '@/composables/features/font'
 import { useSetAvatarRadius } from '@/composables/features/squareAvatar'
 import { useSetDynamicAvatar } from '@/composables/features/dynamicAvatar'
 import { initCSSOM } from '@/utils'
@@ -50,7 +50,12 @@ export default function () {
     Object.keys(config).forEach(key => {
       switch (key) {
         case STORAGE_KEYS.KOOK_HELPER_LITE_PARAGRAPH_FONT:
-          useSetFont(config[key], false)
+          try {
+            const value = JSON.parse(config[key])
+            useSetFont(value.type, value, false)
+          } catch {
+            useSetFont(FONT_TYPES.AUTO, { fontFamily: config[key] }, true)
+          }
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_AVATAR_RADIUS:
           useSetAvatarRadius(config[key], false)
