@@ -21,7 +21,7 @@ export function removeRules(selector: string) {
   let index: number[] = []
   for (let i = 0; i < CSSOM.cssRules.length; i++) {
     // @ts-ignore
-    if (CSSOM.cssRules[i].selectorText === selector) {
+    if (CSSOM.cssRules[i].cssText.startsWith(selector)) {
       index.push(i)
     }
   }

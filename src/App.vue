@@ -77,3 +77,8 @@ onMounted(() => {
   }
 }
 </style>
+<style lang="less">
+label {
+  cursor: auto;
+}
+</style>
