@@ -89,6 +89,11 @@ export function useGetSetCustomFontFamily() {
 
 export function useResetFont(saveConfig = true) {
   init()
+  document.fonts.forEach(font => {
+    if (font.family === 'CustomFont') {
+      document.fonts.delete(font)
+    }
+  })
   removeRules(selector)
   saveConfig && storageHelper.removeKey(STORAGE_KEYS.KOOK_HELPER_LITE_PARAGRAPH_FONT)
 }
