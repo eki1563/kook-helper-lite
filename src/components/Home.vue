@@ -18,8 +18,6 @@
                   <Avatar/>
                 </n-collapse-item>
               </n-collapse>
-              <n-divider/>
-              <PanGu/>
               <template #action>
                 来自服务器内小伙伴们的奇思妙想。
               </template>
@@ -34,7 +32,7 @@
               <n-divider/>
               <n-collapse display-directive="show" arrow-placement="right">
                 <n-collapse-item title="过渡动画" name="1">
-                  <Transitions />
+                  <Transitions/>
                 </n-collapse-item>
               </n-collapse>
               <template #action>
@@ -68,8 +66,7 @@ import Avatar from '@/components/features/Avatar.vue'
 import Intro from '@/components/optimizations/Intro.vue'
 import Transitions from '@/components/optimizations/Transitions.vue'
 import pkg from '/package.json'
-import dayjs from 'dayjs'
-import PanGu from '@/components/features/Pangu.vue'
+// import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)
 const version = `v${ pkg.version }`

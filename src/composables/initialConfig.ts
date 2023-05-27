@@ -11,7 +11,6 @@ import { useSetDynamicAvatar } from '@/composables/features/dynamicAvatar'
 import { initCSSOM } from '@/utils'
 import { useSetEnhance, useSetScroll } from '@/composables/optimizations/intro'
 import { useSetSmooth } from '@/composables/optimizations/transitions/hoverSmooth'
-import { useSetPangu } from '@/composables/features/pangu'
 import { useSetSettingsTransition } from '@/composables/optimizations/transitions/settingsPanel'
 
 function updateToNewString() {
@@ -71,9 +70,6 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_HOVER_SMOOTH:
           useSetSmooth(config[key], false)
-          break
-        case STORAGE_KEYS.KOOK_HELPER_LITE_PANGU_SPACE:
-          useSetPangu(config[key], false)
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_SETTINGS_TRANSITION:
           useSetSettingsTransition(config[key], false)
