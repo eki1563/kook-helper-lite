@@ -24,7 +24,7 @@ function setFontFace(regularName: string, boldName: string) {
     }
   })
   const regular = new FontFace('CustomFont', `local('${ regularName }')`, { weight: 'normal' })
-  const bold = new FontFace('CustomFont Bold', `local('${ boldName }')`, { weight: 'bold' })
+  const bold = new FontFace('CustomFont', `local('${ boldName }')`, { weight: 'bold' })
   Promise.all([regular.load(), bold.load()])
     .then(res => {
       res.forEach(font => {

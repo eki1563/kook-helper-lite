@@ -20,16 +20,26 @@
         </n-tab-pane>
         <n-tab-pane :name="FONT_TYPES.MANUAL" tab="手动设置" style="padding: 0 0 0 10px;">
           <n-space align="center" justify="start">
-            <div>
+            <n-space justify="space-between" align="stretch">
               <label>常规字体：</label>
-              <n-input v-model:value="fontNameRegular" style="width: 210px;" type="text" size="small"
-                       placeholder="HYQIHEI_60S" @keydown.enter="onSubmit"/>
-            </div>
-            <div>
+              <div>
+                <n-input v-model:value="fontNameRegular" style="width: 210px;" type="text" size="small"
+                         placeholder="HYQIHEI_60S" @keydown.enter="onSubmit"/>
+                <n-text type="error" style="display:block; height: 20px;">
+                  {{ regularError }}
+                </n-text>
+              </div>
+            </n-space>
+            <n-space justify="space-between" align="stretch">
               <label>加粗字体：</label>
-              <n-input v-model:value="fontNameBold" style="width: 210px;" type="text" size="small"
-                       placeholder="HYQIHEI_85S" @keydown.enter="onSubmit"/>
-            </div>
+              <div>
+                <n-input v-model:value="fontNameBold" style="width: 210px;" type="text" size="small"
+                         placeholder="HYQIHEI_85S" @keydown.enter="onSubmit"/>
+                <n-text type="error" style="display:block; height: 20px;">
+                  {{ boldError }}
+                </n-text>
+              </div>
+            </n-space>
           </n-space>
           <n-alert type="success" :show-icon="false" style="margin-top: 10px;">
             1、请输入已安装的字体文件名本身（不用带上 .ttf 或 .otf 后缀）。
@@ -76,7 +86,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NAlert, NButton, NCard, NDivider, NInput, NSpace, NTabPane, NTabs } from 'naive-ui'
+import { NAlert, NButton, NCard, NDivider, NInput, NSpace, NTabPane, NTabs, NText } from 'naive-ui'
 import { computed, ref, watch } from 'vue'
 import {
   fallBackFonts,
@@ -89,6 +99,8 @@ import {
 const fontFamily = ref('')
 const fontNameRegular = ref('')
 const fontNameBold = ref('')
+const regularError = ref('')
+const boldError = ref('')
 const fontType = ref<FONT_TYPES>(FONT_TYPES.AUTO)
 const fontStatus = useGetSetCustomFontFamily()
 
@@ -121,18 +133,40 @@ if (!previewStyleDOM) {
   document.head.appendChild(CSSNode)
   previewStyleDOM = CSSNode
 }
-watch([fontNameRegular, fontNameBold], ([newRegular, newBold]) => {
-  if (previewStyleDOM && newRegular && newBold) {
+watch(fontNameRegular, newRegular => {
+  if (!newRegular) {
+    regularError.value = ''
+    return
+  }
+  if (previewStyleDOM) {
     const regular = new FontFace('CustomFontPreview', `local('${ newRegular }')`, { weight: 'normal' })
-    const bold = new FontFace('CustomFontPreview Bold', `local('${ newBold }')`, { weight: 'bold' })
-    Promise.all([regular.load(), bold.load()])
+    regular
+        .load()
         .then(res => {
-          res.forEach(font => {
-            document.fonts.add(font)
-          })
+          document.fonts.add(res)
+          regularError.value = ''
         })
         .catch(e => {
-          console.error('加载字体失败', e)
+          regularError.value = '常规字体加载失败！'
+        })
+  }
+})
+
+watch(fontNameBold, newBold => {
+  if (!newBold) {
+    boldError.value = ''
+    return
+  }
+  if (previewStyleDOM) {
+    const regular = new FontFace('CustomFontPreview', `local('${ newBold }')`, { weight: 'bold' })
+    regular
+        .load()
+        .then(res => {
+          document.fonts.add(res)
+          boldError.value = ''
+        })
+        .catch(e => {
+          boldError.value = '加精字体加载失败！'
         })
   }
 })

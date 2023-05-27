@@ -2,13 +2,13 @@
 import { NDivider, NSpace, NSwitch, NA } from 'naive-ui'
 import TooltipsHelp from '@/components/TooltipsHelp.vue'
 import { ref } from 'vue'
-import { useGetPangu, useSetPangu } from '@/composables/features/pangu'
+// import { useGetPangu, useSetPangu } from '@/composables/features/pangu'
 
 const white = ref(false)
-white.value = useGetPangu()
+// white.value = useGetPangu()
 
 function onWhite(val: boolean) {
-  useSetPangu(val)
+  // useSetPangu(val)
 }
 
 
