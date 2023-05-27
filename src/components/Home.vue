@@ -72,7 +72,7 @@ import dayjs from 'dayjs'
 import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)
-const version = `v${ pkg.version }-${ new dayjs().format('YYYY.MM.DD_HH:mm') }`
+const version = `v${ pkg.version }`
 
 defineExpose({
   show() {
