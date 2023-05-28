@@ -17,6 +17,9 @@
                 <n-collapse-item title="头像" name="2">
                   <Avatar/>
                 </n-collapse-item>
+                <n-collapse-item title="去污粉" name="3">
+                  <Concise/>
+                </n-collapse-item>
               </n-collapse>
               <template #action>
                 来自服务器内小伙伴们的奇思妙想。
@@ -65,6 +68,7 @@ import Font from '@/components/features/Font.vue'
 import Avatar from '@/components/features/Avatar.vue'
 import Intro from '@/components/optimizations/Intro.vue'
 import Transitions from '@/components/optimizations/Transitions.vue'
+import Concise from '@/components/features/Concise.vue'
 import pkg from '/package.json'
 // import PanGu from '@/components/features/Pangu.vue'
 

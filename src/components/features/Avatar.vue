@@ -8,8 +8,13 @@
       </div>
       <div class="preview">
         <h2 style="font-size: 20px;">预览</h2>
-        <img :src="previewUrl"
-             :style="`border-radius: ${radius || '50%'}`" alt=""/>
+        <n-space>
+          <img :src="previewUrl"
+               :style="`border-radius: ${radius || '50%'}`" alt=""/>
+          <n-alert type="default" :show-icon="false">
+            与「去除头像框」搭配食用效果更佳~
+          </n-alert>
+        </n-space>
       </div>
       <n-divider/>
       <n-space justify="space-between">
@@ -30,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { NCard, NButton, NInput, NSwitch, NSpace, NDivider } from 'naive-ui'
+import { NCard, NButton, NInput, NSwitch, NSpace, NDivider, NAlert } from 'naive-ui'
 import { onMounted, ref } from 'vue'
 import { useGetSetAvatarRadius, useResetAvatarRadius, useSetAvatarRadius } from '@/composables/features/squareAvatar'
 import {
