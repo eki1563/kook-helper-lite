@@ -3,7 +3,7 @@ import storageHelper from '@/utils/storageHelper'
 import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
-const avatarFrameSelector = '.win-wapper .kook-avatar-frame-static, .win-wapper .kook-avatar-frame-animate, .user-info-card .kook-avatar-frame-static, .user-info-card .kook-avatar-frame-animate, .dialog-user-profile-content .kook-avatar-frame-animate, .dialog-user-profile-content .kook-avatar-frame-static'
+const avatarFrameSelector = '.win-wapper .kook-avatar-frame-static, .win-wapper .kook-avatar-frame-animate.kook-avatar-frame-animate, .user-info-card .kook-avatar-frame-static, .user-info-card .kook-avatar-frame-animate, .dialog-user-profile-content .kook-avatar-frame-animate, .dialog-user-profile-content .kook-avatar-frame-static'
 
 function init() {
   if (!CSSOM) {
