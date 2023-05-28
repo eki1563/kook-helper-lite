@@ -4,7 +4,7 @@ import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
 
-const radiusSelector: string = '.kook-avatar .kook-avatar-picture-animate, .kook-avatar .kook-avatar-picture-static, .user-info-card .user-avatar-panel .user-avatar-img, .conversation-list .user-avatar-inner, .friend-user-avatar-inner, .kook-avatar .kook-avatar-mask'
+const radiusSelector: string = '.kook-avatar .kook-avatar-picture-animate, .kook-avatar .kook-avatar-picture-static, .user-info-card .user-avatar-panel .user-avatar-img, .conversation-list .user-avatar-inner, .friend-user-avatar-inner, .kook-avatar .kook-avatar-mask, .user-card-preview .user-avatar-box'
 const backgroundSelector: string = '.text-message-item .message-user-head, .kook-avatar-picture-static, .kook-avatar-picture-animate'
 
 export function init() {
