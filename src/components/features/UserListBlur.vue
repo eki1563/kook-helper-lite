@@ -25,7 +25,7 @@ function done() {
 }
 
 onMounted(() => {
-  blurValue.value = +useGetBlurValue()
+  blurValue.value = +useGetBlurValue() || 0
 })
 </script>
 
