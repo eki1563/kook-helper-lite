@@ -20,6 +20,8 @@
                 <n-collapse-item title="去污粉" name="3">
                   <Concise/>
                 </n-collapse-item>
+                <n-divider/>
+                <UserListBlur/>
               </n-collapse>
               <template #action>
                 来自服务器内小伙伴们的奇思妙想。
@@ -70,6 +72,7 @@ import Intro from '@/components/optimizations/Intro.vue'
 import Transitions from '@/components/optimizations/Transitions.vue'
 import Concise from '@/components/features/Concise.vue'
 import pkg from '/package.json'
+import UserListBlur from '@/components/features/UserListBlur.vue'
 // import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)

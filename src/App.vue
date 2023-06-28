@@ -81,4 +81,10 @@ onMounted(() => {
 label {
   cursor: auto;
 }
+.n-drawer {
+  transition: opacity 0.2s ease-in-out;
+}
+.n-drawer-mask {
+  transition: background-color 0.2s ease-in-out;
+}
 </style>
