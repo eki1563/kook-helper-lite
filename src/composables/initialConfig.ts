@@ -14,6 +14,7 @@ import { useSetSmooth } from '@/composables/optimizations/transitions/hoverSmoot
 import { useSetSettingsTransition } from '@/composables/optimizations/transitions/settingsPanel'
 import { useSetBUFFIconVisible, useSetFrameVisible } from '@/composables/features/concise'
 import { useSetBlur } from '@/composables/features/userListBlur'
+import { useSetContrast } from '@/composables/optimizations/roleListContrast'
 
 function updateToNewString() {
   let oldConfig = localStorage.getItem(STORAGE_KEYS_OLD.KOOK_KIT_CONFIG)
@@ -84,6 +85,9 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_USER_LIST_BLUR:
           useSetBlur(config[key], false)
+          break
+        case STORAGE_KEYS.KOOK_HELPER_LITE_ROLE_LIST_CONTRAST:
+          useSetContrast(config[key], false)
           break
         default:
           break
