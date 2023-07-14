@@ -36,8 +36,8 @@ export function useGetContrast() {
     // @ts-ignore
     if (CSSOM.cssRules[i].selectorText === selector) {
       // @ts-ignore
-      const content = CSSOM.cssRules[i].style.getPropertyPriority('pointer-events')
-      return content === 'auto'
+      const content = CSSOM.cssRules[i].style.getPropertyValue('pointer-events')
+      return content === 'all'
     }
   }
 }
