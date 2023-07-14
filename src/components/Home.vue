@@ -35,6 +35,8 @@
               </template>
               <Intro/>
               <n-divider/>
+              <RoleListContrast/>
+              <n-divider/>
               <n-collapse display-directive="show" arrow-placement="right">
                 <n-collapse-item title="过渡动画" name="1">
                   <Transitions/>
@@ -73,6 +75,7 @@ import Transitions from '@/components/optimizations/Transitions.vue'
 import Concise from '@/components/features/Concise.vue'
 import pkg from '/package.json'
 import UserListBlur from '@/components/features/UserListBlur.vue'
+import RoleListContrast from '@/components/optimizations/RoleListContrast.vue'
 // import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)
