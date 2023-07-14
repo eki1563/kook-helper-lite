@@ -65,7 +65,7 @@ function onMoveOut(e: any) {
       return void 0
     }
     if ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) {
-      (container.querySelector('.role-name span') as HTMLSpanElement).style.color = '#2e303a'
+      (container.querySelector('.role-name span') as HTMLSpanElement).style.color = '#222'
     } else {
       (container.querySelector('.role-name span') as HTMLSpanElement).style.color = '#fff'
     }
