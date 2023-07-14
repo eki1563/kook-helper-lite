@@ -76,7 +76,7 @@ function onMoveOut(e: any) {
       const transform = roleColor.replace(/(rgba\(\d+,\s?\d+,\s?\d+,)\s?\d\.\d+\)/, '$1 0.15)')
       container.style.backgroundColor = transform
       if (transform) {
-        (container.querySelector('.role-name span') as HTMLSpanElement).style['color'] = '#fff'
+        (container.querySelector('.role-name span') as HTMLSpanElement).style['color'] = ''
       }
     }
   }
