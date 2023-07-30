@@ -15,6 +15,7 @@ import { useSetSettingsTransition } from '@/composables/optimizations/transition
 import { useSetBUFFIconVisible, useSetFrameVisible } from '@/composables/features/concise'
 import { useSetBlur } from '@/composables/features/userListBlur'
 import { useSetContrast } from '@/composables/optimizations/roleListContrast'
+import { useSetHidden } from '@/composables/features/simpleTextChannel'
 
 function updateToNewString() {
   let oldConfig = localStorage.getItem(STORAGE_KEYS_OLD.KOOK_KIT_CONFIG)
@@ -88,6 +89,9 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_ROLE_LIST_CONTRAST:
           useSetContrast(config[key], false)
+          break
+        case STORAGE_KEYS.KOOK_HELPER_LITE_SIMPLE_TEXT_CHANNEL:
+          useSetHidden(config[key], false)
           break
         default:
           break

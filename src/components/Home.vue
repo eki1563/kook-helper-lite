@@ -22,6 +22,8 @@
                 </n-collapse-item>
                 <n-divider/>
                 <UserListBlur/>
+                <n-divider/>
+                <SimpleTextChannel/>
               </n-collapse>
               <template #action>
                 来自服务器内小伙伴们的奇思妙想。
@@ -76,6 +78,7 @@ import Concise from '@/components/features/Concise.vue'
 import pkg from '/package.json'
 import UserListBlur from '@/components/features/UserListBlur.vue'
 import RoleListContrast from '@/components/optimizations/RoleListContrast.vue'
+import SimpleTextChannel from '@/components/features/SimpleTextChannel.vue'
 // import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)
