@@ -16,12 +16,6 @@
           </n-alert>
         </n-space>
       </div>
-      <n-divider/>
-      <n-space justify="space-between">
-        <label>左下动态头像优先</label>
-        <n-switch v-model:value="dynamic"/>
-      </n-space>
-      <n-divider/>
       <n-space>
         <n-button size="small" type="primary" @click="onSubmit">
           保存
@@ -29,6 +23,25 @@
         <n-button size="small" @click="onReset">
           重置
         </n-button>
+      </n-space>
+      <n-divider/>
+      <n-space justify="space-between">
+        <label>左下动态头像优先</label>
+        <n-switch v-model:value="dynamic" @update:value="onLeftBottomChange"/>
+      </n-space>
+      <n-divider/>
+      <n-space justify="space-between">
+        <label>所有动态头像优先
+          <TooltipsHelp message="虽然可能会变卡也可能造成眼花，但是还是提供一个选项~"/>
+        </label>
+        <n-switch v-model:value="allDynamicAvatar" @update:value="onAllDynamicAvatarChange"/>
+      </n-space>
+      <n-divider/>
+      <n-space justify="space-between">
+        <label>所有动态头像框优先
+          <TooltipsHelp message="虽然可能会变卡也可能造成眼花，但是还是提供一个选项~"/>
+        </label>
+        <n-switch v-model:value="allDynamicFrame" @update:value="onAllDynamicFrameChange"/>
       </n-space>
     </n-space>
   </n-card>
@@ -39,15 +52,24 @@ import { NCard, NButton, NInput, NSwitch, NSpace, NDivider, NAlert } from 'naive
 import { onMounted, ref } from 'vue'
 import { useGetSetAvatarRadius, useResetAvatarRadius, useSetAvatarRadius } from '@/composables/features/squareAvatar'
 import {
+  useGetAllDynamicAvatar,
+  useGetAllDynamicFrame,
   useGetSetAvatarDynamic,
   useResetAvatarDynamic,
+  useSetAllDynamicAvatar,
+  useSetAllDynamicFrame,
   useSetDynamicAvatar,
 } from '@/composables/features/dynamicAvatar'
+import TooltipsHelp from '@/components/TooltipsHelp.vue'
 
 const radius = ref('')
 const dynamic = ref(false)
+const allDynamicAvatar = ref(false)
+const allDynamicFrame = ref(false)
 radius.value = useGetSetAvatarRadius() || '50%'
 dynamic.value = useGetSetAvatarDynamic() || false
+allDynamicAvatar.value = useGetAllDynamicAvatar()
+allDynamicFrame.value = useGetAllDynamicFrame()
 const previewUrl = ref('')
 
 onMounted(() => {
@@ -69,7 +91,18 @@ function onSubmit() {
   if (radius.value && radius.value.trim().length) {
     useSetAvatarRadius(radius.value)
   }
-  useSetDynamicAvatar(dynamic.value)
+}
+
+function onLeftBottomChange(val: boolean) {
+  useSetDynamicAvatar(val)
+}
+
+function onAllDynamicAvatarChange(val: boolean) {
+  useSetAllDynamicAvatar(val)
+}
+
+function onAllDynamicFrameChange(val: boolean) {
+  useSetAllDynamicFrame(val)
 }
 
 function onReset() {
