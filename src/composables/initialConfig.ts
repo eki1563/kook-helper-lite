@@ -7,7 +7,11 @@ import storageHelper from '@/utils/storageHelper'
 
 import { FONT_TYPES, useSetFont } from '@/composables/features/font'
 import { useSetAvatarRadius } from '@/composables/features/squareAvatar'
-import { useSetDynamicAvatar } from '@/composables/features/dynamicAvatar'
+import {
+  useSetAllDynamicAvatar,
+  useSetAllDynamicFrame,
+  useSetDynamicAvatar,
+} from '@/composables/features/dynamicAvatar'
 import { initCSSOM } from '@/utils'
 import { useSetEnhance, useSetScroll } from '@/composables/optimizations/intro'
 import { useSetSmooth } from '@/composables/optimizations/transitions/hoverSmooth'
@@ -65,6 +69,12 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_AVATAR_DYNAMIC:
           useSetDynamicAvatar(config[key], false)
+          break
+        case STORAGE_KEYS.KOOK_HELPER_LITE_ALL_DYNAMIC_AVATAR:
+          useSetAllDynamicAvatar(config[key], false)
+          break
+        case STORAGE_KEYS.KOOK_HELPER_LITE_ALL_DYNAMIC_FRAME:
+          useSetAllDynamicFrame(config[key], false)
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_INTRO_SCROLL:
           useSetScroll(config[key], false)
