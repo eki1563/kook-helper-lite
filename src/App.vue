@@ -5,7 +5,7 @@ import { NConfigProvider, darkTheme, lightTheme, NTooltip, NBadge } from 'naive-
 import storageHelper from '@/utils/storageHelper'
 import STORAGE_KEYS from '@/config/STORAGE_KEYS'
 import { version } from '/package.json'
-import { versionCompare } from '@/utils'
+import { hasNewFeature } from '@/utils'
 
 const newVersion = ref(false)
 const HomeRef = ref()
@@ -30,7 +30,7 @@ function onShowHomePage() {
 
 onMounted(() => {
   const previous = storageHelper.getKey(STORAGE_KEYS.KOOK_HELPER_LITE_PREVIOUS_VERSION) || '0.0.0'
-  if (versionCompare(previous, version) !== previous) {
+  if (hasNewFeature(version, previous)) {
     newVersion.value = true
   }
 })
