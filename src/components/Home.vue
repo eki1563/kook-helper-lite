@@ -39,6 +39,8 @@
               <n-divider/>
               <RoleListContrast/>
               <n-divider/>
+              <PinChannel/>
+              <n-divider/>
               <n-collapse display-directive="show" arrow-placement="right">
                 <n-collapse-item title="过渡动画" name="1">
                   <Transitions/>
@@ -60,7 +62,7 @@
           </n-space>
         </n-scrollbar>
         <template #footer>
-          by: eki1563 | 还没做完 | {{ version }}
+          by: eki1563 | {{ version }}
         </template>
       </n-drawer-content>
     </n-drawer>
@@ -79,6 +81,7 @@ import pkg from '/package.json'
 import UserListBlur from '@/components/features/UserListBlur.vue'
 import RoleListContrast from '@/components/optimizations/RoleListContrast.vue'
 import SimpleTextChannel from '@/components/features/SimpleTextChannel.vue'
+import PinChannel from '@/components/optimizations/PinChannel.vue'
 // import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)
