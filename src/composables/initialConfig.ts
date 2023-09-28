@@ -17,6 +17,7 @@ import { useSetBUFFIconVisible, useSetFrameVisible } from '@/composables/feature
 import { useSetBlur } from '@/composables/features/userListBlur'
 import { useSetContrast } from '@/composables/optimizations/roleListContrast'
 import { useSetHidden } from '@/composables/features/simpleTextChannel'
+import { useSetPin } from '@/composables/optimizations/pinChannel'
 
 
 export default function () {
@@ -71,6 +72,9 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_SIMPLE_TEXT_CHANNEL:
           useSetHidden(config[key], false)
+          break
+        case STORAGE_KEYS.KOOK_HELPER_LITE_PIN:
+          useSetPin(config[key], false)
           break
         default:
           break
