@@ -3,7 +3,7 @@ import storageHelper from '@/utils/storageHelper'
 import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
-const wrapperSelector = '.channel-item.active'
+const wrapperSelector = '.channel-item.active.type-text'
 const backgroundSelector = '.channel-item.active .newchannel-title::after'
 
 const observer = new MutationObserver(function (mutations) {
