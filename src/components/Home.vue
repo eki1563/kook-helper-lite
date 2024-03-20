@@ -50,15 +50,22 @@
                 有时候你这认为的 bug 其实是 feature。
               </template>
             </n-card>
-            <!--          <n-card title="bug">-->
-            <!--            卡片内容-->
-            <!--            <template #footer>-->
-            <!--              #footer-->
-            <!--            </template>-->
-            <!--            <template #action>-->
-            <!--              #action-->
-            <!--            </template>-->
-            <!--          </n-card>-->
+            <n-card>
+              <template #header>
+                <n-h3 prefix="bar" type="error" align-text>
+                  高级
+                </n-h3>
+              </template>
+              <n-collapse display-directive="show" arrow-placement="right">
+                <n-collapse-item title="自定义样式" name="1">
+                  <CustomCSS/>
+                </n-collapse-item>
+              </n-collapse>
+              <n-divider/>
+              <template #action>
+                你最好知道你在干什么。
+              </template>
+            </n-card>
           </n-space>
         </n-scrollbar>
         <template #footer>
@@ -82,6 +89,7 @@ import UserListBlur from '@/components/features/UserListBlur.vue'
 import RoleListContrast from '@/components/optimizations/RoleListContrast.vue'
 import SimpleTextChannel from '@/components/features/SimpleTextChannel.vue'
 import PinChannel from '@/components/optimizations/PinChannel.vue'
+import CustomCSS from '@/components/features/CustomCSS.vue'
 // import PanGu from '@/components/features/Pangu.vue'
 
 const visibility = ref(false)

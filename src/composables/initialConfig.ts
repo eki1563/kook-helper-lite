@@ -18,6 +18,7 @@ import { useSetBlur } from '@/composables/features/userListBlur'
 import { useSetContrast } from '@/composables/optimizations/roleListContrast'
 import { useSetHidden } from '@/composables/features/simpleTextChannel'
 import { useSetPin } from '@/composables/optimizations/pinChannel'
+import { useSetCustomCSS } from '@/composables/features/customCSS'
 
 
 export default function () {
@@ -75,6 +76,9 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_PIN:
           useSetPin(config[key], false)
+          break
+        case STORAGE_KEYS.CUSTOM_CSS:
+          useSetCustomCSS(config[key], false)
           break
         default:
           break
