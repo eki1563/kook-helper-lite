@@ -1,6 +1,6 @@
 {
   "name": "kook-helper-lite",
-  "version": "0.10.2",
+  "version": "0.11.0",
   "private": true,
   "license": "Apache-2.0",
   "packageManager": "pnpm@8.4.0",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
-    "vue": "^3.2.47"
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@tsconfig/node18": "^2.0.0",
