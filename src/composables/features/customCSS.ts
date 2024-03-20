@@ -9,7 +9,7 @@ export function useSetCustomCSS(css: string, saveConfig = true) {
     styleNode.setAttribute('data-title', 'kook-helper-lite__custom-css')
   }
   document.head.appendChild(styleNode)
-  styleNode.appendChild(document.createTextNode(css))
+  styleNode.textContent = css
   saveConfig && storageHelper.setKey(STORAGE_KEYS.CUSTOM_CSS, css)
 }
 

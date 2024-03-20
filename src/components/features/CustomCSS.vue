@@ -30,6 +30,7 @@ function onSave() {
 
 function onClear() {
   useSetCustomCSS('')
+  cssContentRef.value = ''
 }
 
 </script>
