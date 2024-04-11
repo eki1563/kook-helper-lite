@@ -55,5 +55,5 @@ export function useResetSmooth(saveConfig = true) {
   removeRules(`.sort-item:hover .newchannel-title::before, .sort-item:hover .new-audio-channel-title::before, .user-item:hover::before, .nav-item:hover::before, .friend-nav-item:hover::before`)
   removeRules(`.sort-item:hover ~ .sort-item .newchannel-title::before, .sort-item:hover ~ .sort-item .new-audio-channel-title::before, .user-item:hover ~ .user-item::before, .nav-item:hover ~ .nav-item::before, .friend-nav-item:hover ~ .friend-nav-item::before`)
   removeRules(`.channel-item .newchannel-title:hover, .channel-item .new-audio-channel-title:hover, .user-list-container .user-item:hover, .home-nav-container .nav-item:hover`)
-  saveConfig && storageHelper.setKey(STORAGE_KEYS.KOOK_HELPER_LITE_HOVER_SMOOTH, `true`)
+  saveConfig && storageHelper.removeKey(STORAGE_KEYS.KOOK_HELPER_LITE_HOVER_SMOOTH)
 }

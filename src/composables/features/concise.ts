@@ -74,3 +74,36 @@ export function useGetBUFFIconVisible() {
   }
   return false
 }
+
+const namePlateSelector = '.user-name-info > img'
+
+export function useSetNamePlateVisible(visible: boolean | string, saveConfig = true) {
+  if (typeof visible === 'string') {
+    try {
+      visible = JSON.parse(visible)
+    } catch (err) {
+      visible = false
+    }
+  }
+  init()
+  if (visible) {
+    removeRules(namePlateSelector)
+    CSSOM.insertRule(`${ namePlateSelector } {display: none !important;}`)
+  } else {
+    removeRules(namePlateSelector)
+  }
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.NAME_PLATE, `${ visible }`)
+}
+
+export function useGetNamePlateVisible() {
+  init()
+  for (let i = 0; i < CSSOM.cssRules.length; i++) {
+    // @ts-ignore
+    if (CSSOM.cssRules[i].selectorText === namePlateSelector) {
+      // @ts-ignore
+      const content = CSSOM.cssRules[i].style.getPropertyValue('display')
+      return content === 'none'
+    }
+  }
+  return false
+}

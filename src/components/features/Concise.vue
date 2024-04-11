@@ -4,8 +4,10 @@ import { ref } from 'vue'
 import {
   useGetBUFFIconVisible,
   useGetFrameVisible,
+  useGetNamePlateVisible,
   useSetBUFFIconVisible,
   useSetFrameVisible,
+  useSetNamePlateVisible,
 } from '@/composables/features/concise'
 
 const avatarFrame = ref(false)
@@ -23,6 +25,14 @@ function onBuffChange(value: boolean) {
   useSetBUFFIconVisible(value)
   buff.value = value
 }
+
+const namePlate = ref(false)
+namePlate.value = useGetNamePlateVisible()
+
+function onNamePlateChange(value: boolean) {
+  useSetNamePlateVisible(value)
+  namePlate.value = value
+}
 </script>
 
 <template>
@@ -30,6 +40,11 @@ function onBuffChange(value: boolean) {
     <n-space justify="space-between" align="center">
       <label>头像框：</label>
       <n-switch v-model:value="avatarFrame" @update:value="onFrameChange"/>
+    </n-space>
+    <n-divider/>
+    <n-space justify="space-between" align="center">
+      <label>铭牌：</label>
+      <n-switch v-model:value="namePlate" @update:value="onNamePlateChange"/>
     </n-space>
     <n-divider/>
     <n-space justify="space-between" align="center">
