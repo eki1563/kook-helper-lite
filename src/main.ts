@@ -14,7 +14,6 @@ const config = localStorage.getItem(STORAGE_KEYS.KOOK_HELPER_LITE_CONFIG)
 if (!config) {
   localStorage.setItem(STORAGE_KEYS.KOOK_HELPER_LITE_CONFIG, '{}')
 }
-initialConfig()
 let times = 0
 let interval = setInterval(() => {
   const KOOKHeader = document.querySelector('div.win-wapper > div.win-title-bar > div.win-title-inner .win-title-bar-icon-group')
@@ -25,6 +24,7 @@ let interval = setInterval(() => {
     KOOKHeader.insertBefore(rootContainer, KOOKHeader.firstChild)
     setTimeout(() => {
       app.mount(rootContainer)
+      initialConfig()
     })
   } else {
     if (times >= 5) {
