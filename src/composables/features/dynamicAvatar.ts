@@ -7,8 +7,8 @@ const staticAvatarSelector: string = '.app-left .bottom .kook-avatar-picture-sta
 const staticFrameSelector: string = '.app-left .bottom .kook-avatar-frame-static'
 const dynamicAvatarSelector: string = '.app-left .bottom .kook-avatar-picture-animate'
 const dynamicFrameSelector: string = '.app-left .bottom .kook-avatar-frame-animate'
-const allDynamicAvatarSelector: string = '.kook-avatar-has_frame img.kook-avatar-picture-animate'
-const needHideStaticAvatarSelector: string = '.kook-avatar-has_frame:has(img.kook-avatar-picture-animate) img.kook-avatar-picture-static'
+const allDynamicAvatarSelector: string = '.kook-avatar img.kook-avatar-picture-animate'
+const needHideStaticAvatarSelector: string = '.kook-avatar:has(img.kook-avatar-picture-animate) img.kook-avatar-picture-static'
 const allDynamicFrameSelector: string = '.kook-avatar .kook-avatar-frame-animate'
 const allStaticFrameSelector: string = '.kook-avatar .kook-avatar-frame-static'
 
