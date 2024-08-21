@@ -53,9 +53,9 @@ export function versionCompare(a: string, b: string): string {
 export function hasNewFeature(newVersion: string, previousVersion: string) {
   const aVersionArray = newVersion.split('.')
   const bVersionArray = previousVersion.split('.')
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i <= 2; i++) {
     if (+aVersionArray[i] === +bVersionArray[i]) {
-      if (i === 1) {
+      if (i === 2) {
         return false
       }
       continue
