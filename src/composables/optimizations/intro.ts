@@ -6,6 +6,7 @@ let CSSOM: CSSStyleSheet
 const selector = '.user-info-card-content .user-desc .content'
 const scrollBar = '::-webkit-scrollbar'
 const scrollBarThumb = '::-webkit-scrollbar-thumb'
+const showMore = '.user-info-card-content .show-more'
 
 function init() {
   if (!CSSOM) {
@@ -27,10 +28,11 @@ export function useSetScroll(enable: boolean | string, saveConfig = true) {
     return void 0
   }
   useResetScroll(false)
-  CSSOM.insertRule(`${ selector } {overflow-y: auto; display: block; -webkit-box-orient: unset; -webkit-line-clamp: unset; position: relative;}`)
+  CSSOM.insertRule(`${ selector } { max-height: 120px; overflow-y: auto; display: block; -webkit-box-orient: unset; -webkit-line-clamp: unset; position: relative;}`)
   CSSOM.insertRule(`${ selector }${ scrollBar } {width: .3em;}`)
   CSSOM.insertRule(`${ selector }${ scrollBar }, ${ selector }${ scrollBarThumb } {border-radius: 4px;}`)
   CSSOM.insertRule(`${ selector }${ scrollBarThumb } {background: rgba(0, 0, 0, .2);}`)
+  CSSOM.insertRule(`${ showMore } {display: none;}`)
   saveConfig && storageHelper.setKey(STORAGE_KEYS.KOOK_HELPER_LITE_INTRO_SCROLL, `true`)
 }
 
@@ -51,6 +53,7 @@ export function useResetScroll(saveConfig = true) {
   removeRules(selector)
   removeRules(`${ selector }${ scrollBar }`)
   removeRules(`${ selector }${ scrollBarThumb }`)
+  removeRules(showMore)
   saveConfig && storageHelper.removeKey(STORAGE_KEYS.KOOK_HELPER_LITE_INTRO_SCROLL)
 }
 
