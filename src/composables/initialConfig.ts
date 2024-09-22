@@ -13,7 +13,13 @@ import { initCSSOM } from '@/utils'
 import { useSetEnhance, useSetScroll } from '@/composables/optimizations/intro'
 import { useSetSmooth } from '@/composables/optimizations/transitions/hoverSmooth'
 import { useSetSettingsTransition } from '@/composables/optimizations/transitions/settingsPanel'
-import { useSetBUFFIconVisible, useSetFrameVisible, useSetNamePlateVisible } from '@/composables/features/concise'
+import {
+  useSetBoosterVisible,
+  useSetBUFFIconVisible,
+  useSetFrameVisible,
+  useSetNamePlateVisible,
+  useSetUserListIntimacyVisible,
+} from '@/composables/features/concise'
 import { useSetBlur } from '@/composables/features/userListBlur'
 import { useSetContrast } from '@/composables/optimizations/roleListContrast'
 import { useSetHidden } from '@/composables/features/simpleTextChannel'
@@ -79,6 +85,12 @@ export default function () {
           break
         case STORAGE_KEYS.NAME_PLATE:
           useSetNamePlateVisible(config[key], false)
+          break
+        case STORAGE_KEYS.BOOSTER:
+          useSetBoosterVisible(config[key], false)
+          break
+        case STORAGE_KEYS.INTIMACY:
+          useSetUserListIntimacyVisible(config[key], false)
           break
         case STORAGE_KEYS.CUSTOM_CSS:
           useSetCustomCSS(config[key], false)

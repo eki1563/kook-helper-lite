@@ -28,6 +28,10 @@ export default {
   KOOK_HELPER_LITE_CONCISE_BUFF_ICON: 'KOOK_HELPER_LITE_CONCISE_BUFF_ICON',
   // 铭牌过滤
   NAME_PLATE: 'NAME_PLATE',
+  // KOOK 加速器
+  BOOSTER: 'BOOSTER',
+  // 用户列表亲密关系背景
+  INTIMACY: 'INTIMACY',
   // 用户列表 模糊 px
   KOOK_HELPER_LITE_USER_LIST_BLUR: 'KOOK_HELPER_LITE_USER_LIST_BLUR',
   // 隐藏文字频道最新消息
