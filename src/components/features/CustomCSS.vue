@@ -38,7 +38,7 @@ function onClear() {
   <n-card embedded class="custom-css">
     <n-input
         v-model:value="cssContentRef"
-        :maxlength="2 * 1024"
+        :maxlength="3 * 1024"
         type="textarea"
         placeholder="仅支持 CSS 内容，不支持 less、Sass。"
         show-count

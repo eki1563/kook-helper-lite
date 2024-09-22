@@ -107,3 +107,69 @@ export function useGetNamePlateVisible() {
   }
   return false
 }
+
+const boosterSelector = `.win-title-bar-icon-group .win-title-bar-tag`
+
+export function useSetBoosterVisible(visible: boolean | string, saveConfig = true) {
+  if (typeof visible === 'string') {
+    try {
+      visible = JSON.parse(visible)
+    } catch (err) {
+      visible = false
+    }
+  }
+  init()
+  if (visible) {
+    removeRules(boosterSelector)
+    CSSOM.insertRule(`${ boosterSelector } {display: none !important;}`)
+  } else {
+    removeRules(boosterSelector)
+  }
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.BOOSTER, `${ visible }`)
+}
+
+export function useGetBoosterVisible() {
+  init()
+  for (let i = 0; i < CSSOM.cssRules.length; i++) {
+    // @ts-ignore
+    if (CSSOM.cssRules[i].selectorText === boosterSelector) {
+      // @ts-ignore
+      const content = CSSOM.cssRules[i].style.getPropertyValue('display')
+      return content === 'none'
+    }
+  }
+  return false
+}
+
+const intimacySelector = `.user-list-container .user-item .user-info-right.intimacy`
+
+export function useSetUserListIntimacyVisible(visible: boolean | string, saveConfig = true) {
+  if (typeof visible === 'string') {
+    try {
+      visible = JSON.parse(visible)
+    } catch (err) {
+      visible = false
+    }
+  }
+  init()
+  if (visible) {
+    removeRules(intimacySelector)
+    CSSOM.insertRule(`${ intimacySelector } {background-image: none !important;}`)
+  } else {
+    removeRules(intimacySelector)
+  }
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.INTIMACY, `${ visible }`)
+}
+
+export function useGetUserListIntimacyVisible() {
+  init()
+  for (let i = 0; i < CSSOM.cssRules.length; i++) {
+    // @ts-ignore
+    if (CSSOM.cssRules[i].selectorText === intimacySelector) {
+      // @ts-ignore
+      const content = CSSOM.cssRules[i].style.getPropertyValue('background-image')
+      return content === 'none'
+    }
+  }
+  return false
+}
