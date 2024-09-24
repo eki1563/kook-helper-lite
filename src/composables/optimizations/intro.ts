@@ -28,7 +28,7 @@ export function useSetScroll(enable: boolean | string, saveConfig = true) {
     return void 0
   }
   useResetScroll(false)
-  CSSOM.insertRule(`${ selector } { max-height: 120px; overflow-y: auto; display: block; -webkit-box-orient: unset; -webkit-line-clamp: unset; position: relative;}`)
+  CSSOM.insertRule(`${ selector } { max-height: 120px; overflow-y: auto; display: block; -webkit-box-orient: unset; -webkit-line-clamp: unset; position: relative;pointer-events: auto;}`)
   CSSOM.insertRule(`${ selector }${ scrollBar } {width: .3em;}`)
   CSSOM.insertRule(`${ selector }${ scrollBar }, ${ selector }${ scrollBarThumb } {border-radius: 4px;}`)
   CSSOM.insertRule(`${ selector }${ scrollBarThumb } {background: rgba(0, 0, 0, .2);}`)
