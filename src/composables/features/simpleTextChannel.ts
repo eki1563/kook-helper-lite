@@ -4,7 +4,10 @@ import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
 const selector = '.channel-item .newchannel-title .channel-content-info'
-const sibling = '.channel-item .newchannel-title .channel-top-title'
+const sibling = '.channel-item .newchannel-title .channel-top-title:not(.thread-channel-top-title)'
+
+const notPostsChannelSelector = '.channel-item.type-text:not(:has(.thread-channel-top-title))'
+const unreadSelector = '.channel-item.type-text.has-unread.has-unread'
 
 function init() {
   if (!CSSOM) {
@@ -28,6 +31,7 @@ export function useSetHidden(enable: boolean | string, saveConfig = true) {
   useResetHide(false)
   CSSOM.insertRule(`${ selector } {display: none;}`)
   CSSOM.insertRule(`${ sibling } {margin-bottom: 5px;}`)
+  CSSOM.insertRule(`${ notPostsChannelSelector } {height: 34px;}`)
   saveConfig && storageHelper.setKey(STORAGE_KEYS.KOOK_HELPER_LITE_SIMPLE_TEXT_CHANNEL, `true`)
 }
 
@@ -47,5 +51,43 @@ export function useResetHide(saveConfig = true) {
   init()
   removeRules(selector)
   removeRules(sibling)
+  removeRules(notPostsChannelSelector)
   saveConfig && storageHelper.removeKey(STORAGE_KEYS.KOOK_HELPER_LITE_SIMPLE_TEXT_CHANNEL)
+}
+
+export function useSetShowLatestMessageOnNew(enable: boolean | string, saveConfig = true) {
+  if (typeof enable === 'string') {
+    try {
+      enable = JSON.parse(enable)
+    } catch (err) {
+      enable = false
+    }
+  }
+  init()
+  if (!enable) {
+    useResetShowLatestMessage(true)
+    return void 0
+  }
+  useResetShowLatestMessage(false)
+  CSSOM.insertRule(`${ unreadSelector } {height: 60px;}`)
+  CSSOM.insertRule(`${ unreadSelector } .channel-content-info {display: block;}`)
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.SHOW_LATEST_MESSAGE_ON_NEW, `true`)
+}
+
+export function useGetShowLatestMessage() {
+  init()
+  for (let i = 0; i < CSSOM.cssRules.length; i++) {
+    // @ts-ignore
+    if (CSSOM.cssRules[i].selectorText === unreadSelector) {
+      // @ts-ignore
+      const content = CSSOM.cssRules[i].style.getPropertyValue('height')
+      return content === '60px'
+    }
+  }
+}
+
+export function useResetShowLatestMessage(saveConfig = true) {
+  init()
+  removeRules(unreadSelector)
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.SHOW_LATEST_MESSAGE_ON_NEW, `false`)
 }
