@@ -4,7 +4,7 @@ import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
 const selector = '.channel-item .newchannel-title .channel-content-info'
-const sibling = '.channel-item .newchannel-title .channel-top-title'
+const sibling = '.channel-item .newchannel-title .channel-top-title:not(.thread-channel-top-title)'
 
 function init() {
   if (!CSSOM) {
