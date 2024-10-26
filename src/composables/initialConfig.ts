@@ -22,7 +22,7 @@ import {
 } from '@/composables/features/concise'
 import { useSetBlur } from '@/composables/features/userListBlur'
 import { useSetContrast } from '@/composables/optimizations/roleListContrast'
-import { useSetHidden } from '@/composables/features/simpleTextChannel'
+import { useSetHidden, useSetShowLatestMessageOnNew } from '@/composables/features/simpleTextChannel'
 import { useSetPin } from '@/composables/optimizations/pinChannel'
 import { useSetCustomCSS } from '@/composables/features/customCSS'
 
@@ -79,6 +79,9 @@ export default function () {
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_SIMPLE_TEXT_CHANNEL:
           useSetHidden(config[key], false)
+          break
+        case STORAGE_KEYS.SHOW_LATEST_MESSAGE_ON_NEW:
+          useSetShowLatestMessageOnNew(config[key], false)
           break
         case STORAGE_KEYS.KOOK_HELPER_LITE_PIN:
           useSetPin(config[key], false)
