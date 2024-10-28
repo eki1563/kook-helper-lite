@@ -7,7 +7,7 @@ const selector = '.channel-item .newchannel-title .channel-content-info'
 const sibling = '.channel-item .newchannel-title .channel-top-title:not(.thread-channel-top-title)'
 
 const notPostsChannelSelector = '.channel-item.type-text:not(:has(.thread-channel-top-title))'
-const unreadSelector = '.channel-item.type-text.has-unread.has-unread'
+const unreadSelector = '.channel-item.type-text.has-unread.has-unread:not(:has(.thread-channel-top-title))'
 
 function init() {
   if (!CSSOM) {
