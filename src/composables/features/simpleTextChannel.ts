@@ -3,6 +3,7 @@ import storageHelper from '@/utils/storageHelper'
 import { getCSSOM, removeRules } from '@/utils'
 
 let CSSOM: CSSStyleSheet
+const scroller = '.virtual-scroller-contet'
 const selector = '.channel-item .newchannel-title .channel-content-info'
 const sibling = '.channel-item .newchannel-title .channel-top-title:not(.thread-channel-top-title)'
 
@@ -29,6 +30,7 @@ export function useSetHidden(enable: boolean | string, saveConfig = true) {
     return void 0
   }
   useResetHide(false)
+  CSSOM.insertRule(`${ scroller } {height: unset !important;}`)
   CSSOM.insertRule(`${ selector } {display: none;}`)
   CSSOM.insertRule(`${ sibling } {margin-bottom: 5px;}`)
   CSSOM.insertRule(`${ notPostsChannelSelector } {height: 34px;}`)
@@ -49,6 +51,7 @@ export function useGetHidden() {
 
 export function useResetHide(saveConfig = true) {
   init()
+  removeRules(scroller)
   removeRules(selector)
   removeRules(sibling)
   removeRules(notPostsChannelSelector)
