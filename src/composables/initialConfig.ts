@@ -14,6 +14,7 @@ import { useSetEnhance, useSetScroll } from '@/composables/optimizations/intro'
 import { useSetSmooth } from '@/composables/optimizations/transitions/hoverSmooth'
 import { useSetSettingsTransition } from '@/composables/optimizations/transitions/settingsPanel'
 import {
+  useSetActivityVisible,
   useSetBoosterVisible,
   useSetBUFFIconVisible,
   useSetFrameVisible,
@@ -94,6 +95,9 @@ export default function () {
           break
         case STORAGE_KEYS.INTIMACY:
           useSetUserListIntimacyVisible(config[key], false)
+          break
+        case STORAGE_KEYS.ACTIVITY:
+          useSetActivityVisible(config[key], false)
           break
         case STORAGE_KEYS.CUSTOM_CSS:
           useSetCustomCSS(config[key], false)

@@ -32,6 +32,8 @@ export default {
   BOOSTER: 'BOOSTER',
   // 用户列表亲密关系背景
   INTIMACY: 'INTIMACY',
+  // 服务器列表 活动福利入口
+  ACTIVITY: 'ACTIVITY',
   // 用户列表 模糊 px
   KOOK_HELPER_LITE_USER_LIST_BLUR: 'KOOK_HELPER_LITE_USER_LIST_BLUR',
   // 隐藏文字频道最新消息
