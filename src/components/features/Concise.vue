@@ -2,11 +2,13 @@
 import { NCard, NDivider, NSpace, NSwitch } from 'naive-ui'
 import { ref } from 'vue'
 import {
+  useGetActivityVisible,
   useGetBoosterVisible,
   useGetBUFFIconVisible,
   useGetFrameVisible,
   useGetNamePlateVisible,
   useGetUserListIntimacyVisible,
+  useSetActivityVisible,
   useSetBoosterVisible,
   useSetBUFFIconVisible,
   useSetFrameVisible,
@@ -54,6 +56,13 @@ function onIntimacyChange(value: boolean) {
   intimacy.value = value
 }
 
+const activity = ref(false)
+activity.value = useGetActivityVisible()
+
+function onActivityChange(value: boolean) {
+  useSetActivityVisible(value)
+  activity.value = value
+}
 
 </script>
 
@@ -82,6 +91,11 @@ function onIntimacyChange(value: boolean) {
     <n-space justify="space-between" align="center">
       <label>用户列表亲密关系背景：</label>
       <n-switch v-model:value="intimacy" @update:value="onIntimacyChange"/>
+    </n-space>
+    <n-divider/>
+    <n-space justify="space-between" align="center">
+      <label>服务器列表活动与福利：</label>
+      <n-switch v-model:value="activity" @update:value="onActivityChange"/>
     </n-space>
   </n-card>
 </template>

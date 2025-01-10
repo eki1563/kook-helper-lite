@@ -173,3 +173,35 @@ export function useGetUserListIntimacyVisible() {
   }
   return false
 }
+
+const activitySelector = `.app-left .menu-icon-item#app-eventcenter`
+
+export function useSetActivityVisible(hidden: boolean | string, saveConfig = true) {
+  if (typeof hidden === 'string') {
+    try {
+      hidden = JSON.parse(hidden)
+    } catch (err) {
+      hidden = false
+    }
+  }
+  init()
+  if (hidden) {
+    removeRules(activitySelector)
+    CSSOM.insertRule(`${activitySelector} {display: none !important;}`)
+  } else {
+    removeRules(activitySelector)
+  }
+  saveConfig && storageHelper.setKey(STORAGE_KEYS.ACTIVITY, `${ hidden }`)
+}
+
+export function useGetActivityVisible() {
+  init()
+  for (let i = 0; i < CSSOM.cssRules.length; i++) {
+    // @ts-ignore
+    if (CSSOM.cssRules[i].selectorText === activitySelector) {
+      // @ts-ignore
+      const content = CSSOM.cssRules[i].style.getPropertyValue('display')
+      return content === 'none'
+    }
+  }
+}
